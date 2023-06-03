@@ -31,3 +31,4 @@ for page in pdf_reader.pages:
 
 txt_file.write_text("\n".join(content))
 
+#END OF LINE feq
