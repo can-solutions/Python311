@@ -1,0 +1,808 @@
+None
+Number of pages: 10
+Publishedonline28November2016 NucleicAcidsResearch,2017,Vol.45,No.3 1059–1068
+doi:10.1093/nar/gkw1182
+The complex evolutionary history of aminoacyl-tRNA
+synthetases
+Anargyros Chaliotis1, Panayotis Vlastaridis1, Dimitris Mossialos2, Michael Ibba3, Hubert
+D. Becker4, Constantinos Stathopoulos5,*and Grigorios D. Amoutzias1,*
+1Bioinformatics Laboratory, Department of Biochemistry and Biotechnology, University of Thessaly, 41500 Larissa,
+Greece,2Molecular Microbiology Laboratory, Department of Biochemistry and Biotechnology, University of Thessaly,
+41500 Larissa, Greece,3Department of Microbiology, The Ohio State University, Columbus, OH 43210, USA,
+4G´en´etique Mol ´eculaire, G ´enomique, Microbiologie, UMR 7156, CNRS, Universit ´e de Strasbourg, 4 all ´ee Konrad
+R¨ontgen, 67084 Strasbourg Cedex, France and5Department of Biochemistry, School of Medicine, University of
+Patras, 26504 Patras, Greece
+Received August 25, 2016; Revised October 20, 2016; Editorial Decision November 14, 2016; Accepted November 16, 2016
+ABSTRACT
+Aminoacyl-tRNA synthetases (AARSs) are a super-
+family of enzymes responsible for the faithful trans-
+lation of the genetic code and have lately become aprominent target for synthetic biologists. Our large-
+scale analysis of >2500 prokaryotic genomes reveals
+the complex evolutionary history of these enzymesand their paralogs, in which horizontal gene trans-
+fer played an important role. These results show that
+a widespread belief in the evolutionary stability ofthis superfamily is misconceived. Although AlaRS,
+GlyRS, LeuRS, IleRS, ValRS are the most stable mem-
+bers of the family, GluRS, LysRS and CysRS oftenhave paralogs, whereas AsnRS, GlnRS, PylRS and
+SepRS are often absent from many genomes. In the
+course of this analysis, highly conserved protein mo-tifs and domains within each of the AARS loci were
+identiﬁed and used to build a web-based computa-
+tional tool for the genome-wide detection of AARS
+coding sequences. This is based on hidden Markov
+models (HMMs) and is available together with a cog-nate database that may be used for speciﬁc analyses.
+The bioinformatics tools that we have developed may
+also help to identify new antibiotic agents and targetsusing these essential enzymes. These tools also may
+help to identify organisms with alternative pathways
+that are involved in maintaining the ﬁdelity of the ge-netic code.
+INTRODUCTION
+Aminoacyl-tRNA synthetases (AARSs) are very ancient
+house-keeping enzymes that are present in all eukaryotes,archaea and bacteria. They mediate the accurate esterifica-
+tion of amino acids (aa) to their cognate tRNAs and thusrepresent an essential superfamily of enzymes responsible
+for the faithful translation of the genetic code. Apart from
+the twenty AARSs that are responsible for the incorpo-ration of the twenty standard proteinogenic aa, two addi-
+tional AARSs, PylRS and SepRS, are used by some or-
+ganismsduringincorporationoftherareaapyrolysineandphosphoserine, respectively. AARSs are divided into two
+non-homologous classes: class I and class II, mainly based
+on distinct structural folds of their catalytic domains andonwhichsideofthetRNAacceptor-stemwillberecognized
+by the enzyme ( 1,2). A common misconception is that the
+genome of almost every organism contains a complete setof20AARS,eachbeingindividuallyresponsibleforcoding
+theenzymethatchargesacognatetRNAwithoneofthe20
+naturallyoccurringaa.Withtheever-increasingavailabilityof complete genome sequences, it is becoming evident that
+geneduplication,horizontalgenetransfer,andgenelossare
+much more frequent events among the AARSs than origi-nally thought.
+The absence of an AARS-encoding gene from a genome
+is possible because it does not necessarily correlate withthe absence of the corresponding essential biochemical
+function. For example, the absence of glutaminyl-tRNA
+synthetase (GlnRS) is rescued by a non-discriminatingglutamyl-tRNA synthetase (ND-GluRS) that can mis-
+acylate Glu to a tRNA
+Gln, which is then modified to Gln-
+tRNAGlnby a tRNA-dependent amidotransferase ( 3). En-
+zymatic modification of a mischarged aminoacyl-tRNA
+(aa-tRNA) is documented for Asn, Gln, Cys, selenocys-
+teine and formylmethionine ( 4–8). Therefore, cataloguing
+all those cases where classical AARS genes are missing is
+anecessaryfirststepinidentifyingknownalternativepath-ways that enable cognate charging of the tRNA species for
+*Towhomcorrespondenceshouldbeaddressed.Tel: +302410565289;Fax:+302410565290;Email:amoutzias@bio.uth.gr
+CorrespondencemayalsobeaddressedtoDr.ConstantinosStathopoulos.Tel:+302610997932;Fax:+302610969167;Email:cstath@med.upatras.gr
+C/circlecopyrtTheAuthor(s) 2016. Published by Oxford University Presson behalf of NucleicAcids Research.
+This is an Open Access article distributed under the terms of the Creative Commons Attribution License (http: //creativecommons.org /licenses /by-nc /4.0/), which
+permits non-commercial re-use, distribution, and reproduction in any medium, provided the original work is properly cited. For commercial re-use, please contact
+journals.permissions@oup.com
+1060NucleicAcidsResearch,2017,Vol.45,No.3
+whichthecognateAARSismissing.Geneticcodedecoding
+is a much more variable step than originally thought and
+needs tobe quantified ( 9).
+There are numerous reports of genomes with more than
+one gene for the same AARS enzyme or even paralogous
+fragments consisting of free-standing domains of AARSs
+(e.g. catalytic-, anticodon-binding- and editing domains).These paralogs and paralog fragments have been the focus
+of intense interest since their gene products exhibit diverse
+functions outside translation. These range from tRNA-dependent aa synthesis, tRNA posttranscriptional mod-
+ification, editing of misactivated aa and antibiotic resis-
+tanceinbacteria,tomolecularhubswithinessentialsignal-ing pathways that regulate tumorigenesis in humans ( 10–
+16).Evolutionaryanalyseshavehighlightedtheimportance
+of horizontal gene transfer (HGT) in the evolution of theAARS family ( 17) and it has been found that this is of-
+ten linked to antibiotic resistance, especially in microbes
+(11,18–21).ThefactthatbacterialAARSsdonotoften( 22)
+participateincomplexprotein-proteininteractionsandthat
+they are frequently compatible with tRNAs from phyloge-neticallydistantorganismssuggeststhattheyarefrequently
+functional (andhence selectable)followingHGT.
+Many microorganisms have evolved low molecular
+weight toxins that target these essential enzymes in other
+microorganisms. Such toxins have already been identified
+forAlaRS,AspRS,AsnRS,IleRS,LeuRS,LysRS,MetRS,ProRS, SerRS, ThrRS, TyrRS, TrpRs, PheRS ( 11,23).Cor-
+respondingly, the microorganisms under attack either ac-
+quirelow-levelresistance viapointmutationstothetargeted
+AARS, or they acquire a resistant AARS paralog from
+other organisms viaHGT (24,25). The most prominent ex-
+ample of these toxins is mupirocin ( 13), a natural antibi-
+oticthathasbeencommercialized. Pseudomonasfluorescens
+NCIMB10586hasalargegeneclusterthatcontainsseveral
+polyketidesynthasegenesandisresponsiblefortheproduc-tionofpseudomonicacid(otherwiseknownasmupirocin),
+a natural compound that targets /inhibits IleRS. Interest-
+ingly,withinthatcluster,thereexistsadivergentmupirocin-resistantIleRSparalog(designatedasmupA)inadditionto
+the native, mupirocin-sensitive, IleRS. Therefore, both the
+toxin and the antidote are in the same gene cluster ( 25,26).
+The discovery that divergent AARS-paralogs confer resis-
+tancetonaturalAARS-inhibitorshasbeendocumentedfor
+MetRS, TrpRS, IleRS and SerRS paralogs; for a thoroughreview see ( 11,27). Thus, the detection of AARS paralogs
+may lead to the discovery of new antibiotics that are ei-
+therencodedasageneclusterinthevicinityoftheparalog,or somewhere else in the genome. Furthermore, potential
+natural AARS inhibitors may be identified by comparative
+genomics between closely related strains, where one of the
+strains has an AARS duplicate (and may also have the in-
+hibitor gene) whereas the other strains lack the AARS du-plicate (andthe inhibitor).
+The manipulation and extension of the genetic code is
+considered a cornerstone of synthetic biology and biotech-nology. In particular, the charging of certain tRNAs with
+unnatural aa is crucial for both the construction of safe
+GMOs and the engineering of enzymes with novel proper-ties(28–31).Towardthisgoal,itisimportanttounderstand
+how the specificity of AARSs for aa and tRNAs is deter-mined.Therefore,theunbiaseddetectionofconservedmo-
+tifs that characterize each specific AARS enzyme is a pre-
+requisite for future manipulation and rational site-directed
+mutagenesis studies.
+The goal of our study was 5-fold: (i) to identify, in an
+unbiasedmanner,highlyconservedmotifsanddomainsfor
+eachAARS,(ii)todevelopanovelandsensitiveweb-basedcomputational tool (based on these motifs and domains)
+that is capable of identifying orthologs and paralogs, or
+evendivergentfragmentsofAARSenzymes,fromallking-doms of life and on a genome-wide scale, (iii) to analyze
+more than 2500 prokaryotic genomes in order to provide
+the first thorough and comprehensive evolutionary analy-sis of AARS genes and their paralogs, (iv) to organize and
+storealltheaboveinformationinawell-organizeddatabase
+tomakeitpubliclyaccessibleforstudiesofalternativepath-
+ways or new antibiotics and (v) to identify potential candi-
+datesfor AARS inhibitors /antibiotics.
+MATERIALS AND METHODS
+All annotated eukaryotic, prokaryotic and organel-
+lar AARS sequences (11 984) were retrieved from theUniprot /Swissprot database ( 32). Redundancy was filtered
+out at the 95% and 70% sequence similarity level with
+the BlastClust software, resulting in non-redundant sets
+of 7517 and 3276 AARS sequences, respectively. 2588
+complete prokaryotic proteomes were downloaded fromthe NCBI ftp server with their sequences in fasta format
+and their corresponding coordination ptt files for each
+gene.
+Conserved motifs were identified in each AARS enzyme
+using the MEME software ( 33). It has been suggested by
+previous analyses of this superfamily that domain archi-tecture is a good marker for phylogenetic reconstruction
+(21). In general, domain emergence is very ancient, but
+domain re-arrangements are a very common phenomenon(34–37). Custom-made HMM generation and scanning
+was performed with the HMMER software ( 38). Multi-
+ple alignments were performed with the Muscle software(39) whereas distance-based BioNJ phylogenetic analysis
+wasperformedwiththeSeaviewsoftware( 40).Treedynwas
+used for phylogenetic tree visualization ( 41) and integra-
+tion of phylogenetic trees together with MEME-motif ar-
+chitecturewasperformedinhtmlpagesbyusingJavascript.
+All data handling was performed with custom-made Perlscripts. Smith-Waterman pairwise alignment and protein
+similaritycalculationforpairsofhomologswithinthesame
+genomewereestimatedwiththeEMBOSSWaterprogram.
+ConstructionofHMMsofconservedcore-catalytic,edit-
+ing and tRNA-binding domains was based on integration
+of information from many sources, such as manual in-spection of alignments, MEME-motif architecture, expert
+knowledgefromliterature( 20,21),domaincharacterization
+from PDB( 42), Astral ( 43), Interpro ( 44)a n dCD D( 45).
+Data organization and storage was implemented in a
+MySQLdatabase.Awebgraphicalinterfacewasgenerated
+with Java Language and Spring Framework for the back-
+endandAngularJSFrameworkforthefront-endthatisde-
+velopedinasingle-pageapplicationformat.Front-endand
+NucleicAcidsResearch,2017,Vol.45,No.3 1061
+back-endcommunicationisestablishedthroughanauthen-
+ticatedRESTful API.
+RESULTS AND DISCUSSION
+Discoveryof highly conserved motifs ineachAARSclass
+Initially, 3276 Swissprot annotated AARS protein se-
+quences (redundancy filtered at the 70% sequence similar-ity level) from each of the two classes (1739 in class I and
+1537 in class II) were analyzed with the MEME software,
+in order to identify shared conserved motifs within each ofthe two non-homologous classes. It is already well estab-
+lished that class I contains a Rossman fold with the two
+characteristic HIGH and a KMSKS conserved signatures,
+whereas class II contains three other conserved motifs ( 1).
+Our MEME analysis identified successfully the HIGH andKMSKS motifs in 98% (1708 /1739) and 80% (1394 /1739)
+of the Swissprot class I proteins respectively. It also identi-
+fied motifs 1, 2 and 3 in 59% (901 /1537), 73% (1121 /1537)
+and 70% (1069 /1537) of the Swissprot class II proteins re-
+spectively. The reason is that these three motifs and espe-
+cially motif 1 are not so strongly conserved in all class IIAARSs.Interestingly,forthefirsttime,afourthmotif,des-
+ignatedasmotif2B,duetoitsC-terminalproximitytomo-
+tif2wasalsoidentifiedin73%(1124 /1537)oftheSwissprot
+annotatedclassIIproteins.Figure 1andSupplementaryfile
+1 summarizes the findings and the logos of the conserved
+motifs in each of the AARS classes. From these logos, it isevident that they are very short and dependent on only a
+few aa. When the MEME algorithm analyzes homologs of
+thetwoAARSclassesitiscapableofidentifyingtheseveryshort motifs that are highly enriched in each class of this
+super-family. Nevertheless, profile Hidden Markov models
+based on these very short motifs have very limited detec-tion power, when it comes to proteome-wide scanning of
+many diverse non-homologous families. Therefore, detec-
+tion of AARS homologs based solely on these highly con-served, but very short motifs, is problematic. Another ap-
+proachisneeded,whereaseriesofhighlyconservedmotifs
+areusedattheenzymelevel(i.e.conservedwithinthatpar-ticular AARS enzyme),rather than at theclass level.
+Discovery of conserved motifs in each AARS enzyme and
+phylogenetic analyses
+Foreachofthe20AARSenzymes,aswellasforPylRSand
+SepRS, the corresponding Swissprot annotated protein se-quences (redundancy filtered at the 95% sequence similar-
+ity level) were analyzed with the MEME software in order
+to identify shared conserved motifs. The identification andarchitecture of MEME-motifs allowed us to separate each
+enzymegrouptoitsdistinctphylogeneticsubgroups.Inad-
+dition, it provided a better understanding of the degree ofdiversificationofeachorthologandveryimportantly,ofthe
+various paralogs or paralog fragments. Towards this goal,
+MEME was run with a parameter set that aimed to iden-tify 10 motifs for each AARS enzyme, except Asp–Asn–
+AARS and Glu–Gln–AARS enzymes, where MEME was
+setto identify20 motifs.
+Based on the number and sequence-regions of identified
+motifs that were present in all protein sequences of a cer-tain enzyme (that ranged between 2 and 10 motifs), BioNJ
+phylogenetic trees were constructed for each enzyme and
+the trees were visualized with the Treedyn software. More
+specifically, the sequence regions of the motifs that werecommon in all sequences were concatenated for each se-
+quence, and then the concatenated motif sequences were
+used to build a tree. Next, a tree for a certain enzyme wasintegrated with the MEME-motif architecture of each se-
+quence (in that tree) in html pages, using Javascript. Based
+on the phylogenetic tree and the motif architecture, when-ever applicable, phylogenetic subgroups were identified by
+manual inspection within a certain enzyme. Each of these
+subgroups underwent another round of MEME-motif dis-covery,againusingaparametersetof10motifsandsubse-
+quentphylogeneticanalysisusingonlythesharedmotifsof
+thesubgroup.Thenewphylogenetictreesandtheirmotifar-chitectureswerevisualizedagainwiththeTreedynsoftware
+andJavascriptinhtml.Thisiterativeapproachallowedusto
+copeefficientlywithhighlydivergentsubgroupswithinone
+AARS enzyme, or even subgroups that are paraphyletic,
+like GlyRS ( 46).
+Anexampleoftheaboveanalysisisthefollowing.Forthe
+ProRS enzyme, there were 500 annotated sequences avail-
+ableinSwissprot.TheyunderwentMEME-motifdiscoverywithaparametersetof10motifs.Twomotifs(thattogether
+comprised 36 aa) were common in all sequences and based
+onthese,thefirstBioNJtreewasconstructed.ThattreewasintegratedwiththeaboveMEMEmotifsforeachofthe500
+sequences (see Supplementary Figure S1). Based on that
+treeandmotifarchitecture,itwasdecidedtotreatProRSastwodistinctphylogeneticsubgroups.Subgroup1comprised
+386 sequences and subgroup 2 had the remaining 114 se-
+quences. In this new round, the 386 sequences of subgroup1 again underwent MEME-motif discovery with a param-
+eter set of 10 motifs. This time, eight motifs were identified
+thatwerecommoninallthe386sequencesofthissubgroup.Basedonthese8motifsthattogethercomprised241amino
+acids,asecondphylogeneticanalysiswasperformedspecifi-
+callyforthe386sequences.ThenewtreewasintegratedwiththenewmotifarchitectureandvisualizedwithTreedynand
+Javascript in HTML (see one of the two ProRS trees in the
+database). The same pipeline was implemented for the 114sequencesofProRSsubgroup2.Thistime,ninemotifswere
+identifiedthatwerecommoninallthe114sequencesofthis
+subgroup. Based on these nine motifs that together com-prised 229 amino acids, a third phylogenetic analysis was
+performed specifically for the 114 sequences. The new tree
+was integrated with the new motif architecture and visual-ized with Treedyn and Javascript in HTML (see the other
+ProRS treeinthe database).
+For all the Uniprot AARS enzymes that were used for
+training, the resulting phylogenetic trees together with thecorresponding motifs and motif architectures are availableinhtmlformatinthewebsite( http://bioinf.bio.uth.gr/aars ).
+The above analyses resulted in 33 different phylogenetic
+trees for 22 aaRS enzymes. This is because an AARS en-zymemayneedtobebrokentotwoormoresub-groups,so,
+for each subgroup there exists a new tree and meme motif
+architecture. The members of each kingdom (bacteria, ar-chaea, eukaryotes) aredistinguished bydifferentcolors.
+1062NucleicAcidsResearch,2017,Vol.45,No.3
+Figure1. HighlyconservedmotifsofclassIandclassIIAARSs.
+For each of the 10 motifs of every phylogenetic group or
+subgroup, we extracted the motif-sequences from all mem-
+bers of that subgroup and performed multiple sequencealignment with the MUSCLE algorithm ( 39). Next, each
+of these alignments was used to build a HMM with the
+HMMER software ( 38). In total, 330 HMMs were con-
+structed for their corresponding MEME-motifs. All anno-
+tated AARS from Swissprot were scanned with these 330
+HMMs using the HMMER software. The output file wasfilteredwithacustom-madeperlscriptthatassignedaquery
+proteintoacertainAARSenzyme,basedonmajorityrule.
+More specifically, if two hmms from two different enzymeswere hitting a certain protein region and their coordinates
+wereoverlapping,thehmmwiththebestbitscorewouldbe
+kept. In this way, hmms from different enzymes may com-pete for the same protein region. Finally, the enzyme that
+hadthemosthmmsfoundintheproteinwouldberetained
+as the best assignment. By applying a minimum cut-off oftwoorfivemotifs,theresultinghmmsandthemajorityrule
+filtersappliedresultedin99.9%and99.8%correctlocusas-
+signment respectively (see supplementary file 1: Swissprotevaluation).Thisprotocolhadhighprecision.Therefore,al-
+though a cut-off of five motifs is stringent, its performance
+is very satisfactory. This modular approach of individual
+MEME-motifsisveryrobusttodomainre-arrangementsor
+largeinsertionsthatmayhinderdetectionwithothermeth-ods. The principle applied in this analysis is similar to the
+PRINTS database ( 47).
+Despite all this, a small number of distant AARS par-
+alogs, such as HisZcould not be detected by the MEME-motif approach. To overcome this problem, an additional
+set of highly sensitive HMMs was developed, that was
+based on the whole catalytic domain (sometimes includingan insertion domain). Again, all non-redundant annotated
+AARSsequenceswereusedfortheconstructionofcatalytic
+HMMs for each AARS enzyme, taking into account theevolutionary sub-groups within each AARS. In addition,
+HMMs for editing and tRNA binding domains were cre-
+ated. Again, this set of catalytic domain HMMs for eachlocuscouldcorrectlyidentify99.9%ofSwissprotannotated
+AARSproteins.Furthermore,distantAARSparalogsthat
+could not be detected by the MEME-motif approach werenowdetected.Only9 /883SwissprotannotatedGluRSwere
+identifiedbyourHMMdomainsasGln-GltxRS.Therefore,
+thetwosetsofHMMs,basedonshortandspecificMEME-motifsaswellaslongercatalyticdomainswereintegratedin
+our computational tool and the subsequent bioinformatic
+analyses.
+Development of a database and web-based detection tool
+In order to investigate the AARS evolutionary pro-
+file of prokaryotes, the newly developed computational
+tool /pipelinewasusedtoanalyze ∼8millionproteinsfrom
+2588 prokaryotic proteomes, that were downloaded fromNCBI. Proteins were first scanned by the highly sensitive,
+but not so highly specific, catalytic domain HMMs, result-
+ing in 56 469 protein hits. Next, these hits were further
+scannedbythehighlyspecificmeme-motifs,applyingaless
+stringent cutoff of two motifs and thus resulting in 52 595
+NucleicAcidsResearch,2017,Vol.45,No.3 1063
+proteinhits.Applicationofanevenmorestringentcutoffof
+fivemotifsresultedin49788proteinhits(seesupplementary
+file1: NCBI proteininfo).
+The results from the large-scale NCBI prokaryotic
+proteome-wide scanning have been organized and saved in
+a MySQL database ( bioinf.bio.uth.gr/aars ). The user may
+query, in the database, only those proteins (NCBI proteinaccessions)whosenumberofAARS-specificmotifsexceeds
+athreshold(setbytheuser).Othertypesoffiltersmayalso
+beappliedinordertonarrowthequeryresults-suchasor-ganism name, evolutionary group and subgroup, or search
+by AARS type. In addition, a master table is generated,
+where the number of genes /paralogs for each AARS en-
+zyme are displayed for each genome or a filtered /selected
+set of genomes. User selection of a certain protein also dis-
+playsgraphicallythedomainandmotifarchitectureaswellas the neighboring genes and their NCBI annotation. To
+ourknowledge,theonlyotherdatabasethathasbeendevel-
+opedspecifically forAARSs was constructedin2001 ( 48).
+Aweb-basedAARSmotif /domaindetectiontoolisalso
+integratedintothedatabase,wheretheusermayuploadse-quences in FASTA format for scanning. Such a tool is use-
+fulnotonlyforannotatingtheAARSsuperfamilyinanew
+genome (prokaryotic or even eukaryotic), but also for de-tecting paralog fragments or identifying genomes with al-
+ternative pathways, by observing the absence of a partic-
+ular type of AARS gene. Recently, there has been intenseinterest in identifying human AARS fragments, even those
+that are catalytic nulls, because they seem to be involved
+in diverse functions. Paralog fragments of AARSs repre-sented by appended domains and exhibiting various bio-
+logical functions have been identified in recent years in al-
+most all organisms. The new roles and diverse functions oftheAARSfragmentsor,insomecases,theirgeneduplicates
+aremostlyrelatedtopathwaysoutsidetranslation,ranging
+from editing and antibiotic resistance in bacteria to molec-ular hubs within essential signaling pathways that regulate
+tumorigenesis in humans ( 15,28,49,50). The domain archi-
+tecture of AARSs seems to be critical for conferring addi-tional functions; however, the exact repertoire of these do-
+mains when they act intransstill remains elusive to a great
+extent. Interestingly, it was recently shown that the manip-ulation of such domains revealed their direct involvement
+in many metabolic networks that regulate essential cellular
+processes ( 51).
+A global overview of the evolutionary profile of prokaryotic
+AARS
+By analyzing 2588 prokaryotic proteomes, it was possible
+to obtain a very comprehensive evolutionary profile of this
+complexfamilythatplaysacentralroleinensuringfaithful
+translation of the genetic code and also in natural toxin re-sistance. For many of the subsequent analyses, we applied
+different criteria. In the first and more stringent criterion,
+a gene was considered to be a member of an AARS en-zymeifitdisplayedatleast5outof10motifs.Ourprevious
+evaluationanalysis,basedonSwissportannotatedAARSs,
+showed that this cut-off was capable of capturing and cor-
+rectly annotating 99.8% of the proteins. In a second (and
+morerelaxed)criterion,agenewasconsideredtobeamem-ber of an AARS locus if it had at least 2 out of 10 mo-
+tifs. In an even more relaxed criterion, due to the failure
+of MEME-motifs to capture some very distant homologs,
+such asHisZ, a gene was considered to be a member of
+an AARS enzyme if it was detected by the HMM of a cat-
+alytic domain. In this way,the moredistantparalogs could
+becapturedaswell.TheperformanceoftheMEME-motifs(withcut-offtwoandfive)andthecatalyticdomainHMMs
+is shown in supplementary file1.
+The catalytic domains have a very similar performance
+to that of the MEME-motifs with cut-off two, except for
+ProRS and HisRS. The same conclusions regarding the
+reduced detection power of MEME-motifs, but only forProRS and HisRS distant homologs are also drawn from
+the analysis of the NCBI proteomes (see Table 1). In the
+case of HisRS, the catalytic domain HMMs are capable ofcapturingthe HisZparalogsthatareknowntolackaminoa-
+cylation activity ( 16) whereas the MEME-motifs could not
+capture the vast majority of such paralogs. NCBI has an-
+notated the majority of HisZparalogs as ATP phospho-
+ribosyltransferases. In the case of ProRS, the catalytic do-mainHMMsarecapableofcapturingthe ybaK /ebsC /ProX
+proteins that constitute an editing domain of one ProRS
+sub-groupthatmayfunctionin
+trans,whereastheMEME-
+motifs could not capture the vast majority of the members
+of this sub-group, probably because the motifs were situ-
+atedinthecatalyticcore.VisualinspectionoftheNCBIan-notationofdetectedproteinsbythethreecriteria(catalytic
+domainHMMonly,MEME-motifcutoff,twoandMEME-
+motifcutofffive)revealedthat93.2%(52662 /56531),98.7%
+(51975 /52653) and 99.1% (49380 /49846) of detected pro-
+teins respectively were clearly annotated as tRNA syn-
+thetases or as a known paralog. This is a very strong in-dication that the MEME-motif detection methods are not
+onlyvery sensitive,butalso veryspecific.
+DistributionofAARSgeneswithingenomesreflectstheevo-
+lution of the geneticcode
+Although it is a common belief that most prokaryotic
+genomes have 20 AARS genes, our large-scale analysisclearly showed that this is not the case. Rather, the most
+frequent number of AARS genes in a prokaryotic genome
+is 19, although there also exist many genomes with 20AARS, albeit less frequently. A distribution of the num-
+ber of AARS genes per genome is shown in Figure 2.
+This reduced number is mostly due to the frequent ab-sence of GlnRS (62% of scanned genomes; see Table 1).
+This finding is in accordance with an evolutionary sce-
+nario where GlnRS emerged later in evolution in the eu-karyotic lineage viaduplication of GluRS and moved to
+bacteriaviaHGT (17,52,53). In all prokaryotes missing
+GlnRS, Gln incorporation is mediated viaa transamida-
+tion pathway ( 3,54). Gamma-Proteobacteria were consid-
+eredastheGlnRSentry-pointinthebacterialworld.Byan-
+alyzing the present distribution of GlnRS in the sequencedgenomes and comparing it to an expected by-chance sce-
+nario, the most enriched phylogenetic lineage for GlnRs is
+indeed Proteobacterial (hypergeometric test: 1.5e–169). In
+addition, no Gln-GltxRS was detected in the analyzed Ar-
+chaeal genomes.
+1064NucleicAcidsResearch,2017,Vol.45,No.3
+Table1. EvolutionaryvolatilityprofileofAARSs
+Thefrequency(%)ofabsence–presenceasonegene–presenceofduplicateofanAARSingenomes.Thefrequencywasestimatedbasedonthreedetection
+methods:(i)HMMofcatalyticdomain(CD),(ii)MEME-motifswithaminimumcutoffof2(M2),(iii)MEME-motifswithaminimumcutoffof5(M5).Orange colour for genes that are absent in at least 5% of genomes. Blue colour for genes that are present as one copy in at least 95% of genomes. Green
+colourforgenesthathaveduplicatesinatleast5%ofgenomes.Thefirstcolumndenotesiftheaminoacidisconsideredasanearly(E)orlate(L)additio n
+tothegeneticcode,accordingtoHiggsandPudritz( 58).Secondcolumndenotestheevolutionarygroupofthesynthetase.Semi-lastcolumndenoteswith
+Tifthat AARSistargetedbyatoxin.LastcolumndenoteswithRifthatAARShasaparaloguewithresistancetonaturalinhibitors.
+Alongthesamelineofreasoning,itisveryprobablethat
+AsnRSfollowedanevolutionarypathwaysimilartothatof
+GlnRs,sinceitismissingin47–48%ofprokaryoticgenomes
+studied (missing in 69–74% of analyzed archaeal genomes)(see Table 1and supplementary file 1: Genomes
+tables). In
+this case, by analyzing the present distribution of AsnRS
+in the 2588 sequenced genomes and comparing it to an ex-pected by-chance scenario, the most enriched phylogenetic
+lineageforAsnRs originates amongtheFirmicutes (hyper-
+geometric test:2.7e-116).
+Concerning TrpRS and TyrRS, it has been suggested
+(basedonstructuralalignments)thatthemoreancientgene
+isthatforTyrRSwhereasthatforTrpRSemergedbydupli-cation in the archaeal lineage and later moved to bacteria
+via HGT ( 55). Indeed, this scenario is also supported by
+our evolutionary profile, but only for a cut-off of five mo-tifs,where16%ofprokaryotesaremissingaTrpRSwhereas
+only 1.5% seem to be missing a TyrRS. Interestingly, onlyfor a cut-off of five motifs, HisRS, is missing from 9%
+of studied genomes. Histidine is also considered a rather
+‘young’aa.Theorderthatanaaenteredthegeneticcode,as
+suggested by the co-evolution code theory, is in very goodagreementwithourevolutionaryprofileofAARSenzymes,
+but only for a cut-off of five motifs, as shown in Table 1
+(56,57).
+Intriguingly, there seem to be some broad correlations
+between the evolutionary age and the reactivity of aa and
+the deletion /duplication frequency of their corresponding
+AARSs.AminoacidssuchasArg,Cys,Met,Gln,Tyr,Trp,
+His, Asn, Phe have been proposed to be relatively later ad-
+ditions to the genetic code ( 58). For a strict cut-off of five
+MEME-motifs, the AARSs that esterify these ‘younger’ aa
+(with the exception of Cys and Tyr) also tend to be com-
+pletely absent from prokaryotic genomes more frequentlycompared to the group of AARSs that esterify the older
+aa. It is also very interesting that many of the AARSs that
+NucleicAcidsResearch,2017,Vol.45,No.3 1065
+Figure2. DistributionoftotalAARSspergenome(includingSepRSandPylRS).Bluebars:detectionbasedonthecatalyticdomain:orangebars:detection
+basedona cut-offof twomotifs;graybars:detectionbasedonacut-offoffivemotifs.
+charge older and hydrophobic /non-reactive aa (Leu, Ile,
+Val, Ala, Gly) to tRNAs seem to be very stable (only onecopy of the gene per genome) in their evolutionary profile.
+Takentogether,ourfindingssupportthenotionsthatamino
+acid emergence mirrors genetic code structure, with tRNAand AARS assignments evolving consequently.
+The presence of paralogs is very frequent
+To ensure a conservative approach, the results of this sec-
+tion are based on a cut-off of five motifs, unless stated oth-
+erwise. This analysis revealed that 40–61% (for five motifsand for two motifs) of scanned genomes had at least one
+AARS paralog detected.
+ThehighestnumberofAARSgenesdetectedinagenome
+is 29 inKetasatospora setae and 28 in Bacillus cereus .I n
+general, the Bacillus genus had several genomes with a
+highnumberofAARSgenes /paralogs.Twenty-twopercent
+(581 /2588) and 3% (85 /2588) of scanned NCBI genomes
+had≥21and ≥23AARSs,respectively.Moreover,thegroup
+of genomes with ≥23 AARSs was enriched for Firmicutes
+(64% instead of 21% background; hypergeometric test: 5e–
+17).Ontheotherhand, Nasuiadeltocephalinicola str.NAS-
+ALF was the genome with the lowest number (only oneLeuRS for a cutoff of five motifs and five genes for a cut-
+offoftwomotifs)ofAARSgenesdetected.Thisisprobably
+due to the endosymbiotic lifestyle of the smallest prokary-otic genome yet sequenced (169 genes in total) ( 59). If one
+considers that 20 is the expected number of AARS genes
+that should be found in a genome, our analysis shows that59% (1531 /2588) of the genomes scanned had less than
+that number, whereas 22% had more than 20 AARS genes.
+In terms of paralogs, the most extreme case was of Ki-
+tasatosporasetae withfourallelesfortheSerRSgene.Each
+ofthefourgeneshadsevenormoremotifsandwereallan-
+notated as SerRS by NCBI. Similarly, there were three al-
+leles of the same gene for AspRS, CysRS, GluRS, LeuRS,
+LysRS, ThrRS and ValRS in various species.LysRS is an interesting case, because this AARS can
+either be from class I or class II ( 60). A total of 2143
+genomeshadonlyclassIILysRS,whereas377genomeshad
+only class I LysRS. Thirty nine genomes (mostly Bacillus
+thuringiensis andBacilluscereus strainsandmembersofthe
+Streptomyces genus)hadgenesfrombothclasses.Itismore
+common to have a paralogous gene of the same class (218
+genomeswithclass-IILysparalogs;onlyonecaseofapar-
+aloginclassI)insteadofhavinggenesfromthetwoclasses
+(39 cases).
+One crucial question for understanding the molecular
+mechanisms of evolution of AARS paralogs found within
+thesamegenome,iswhethertheyresultfromeithergenedu-plicationorHGT.Towardthisgoal,abasicassumptionwas
+made that if two homologs of the same enzyme have very
+high protein sequence similarity, then they are most prob-ably the result of a recent gene duplication. On the other
+hand, if two homologs have rather low similarity, then ei-
+thertheyaretheresultofHGTorrepresentsurvivorsfromaveryoldgeneduplicationeventthatwassoonfollowedby
+rapid divergence.Byusing1751pairs ofhomologs,thedis-
+tribution of the percentage of protein similarity was calcu-lated (shown in supplementary file 1: Paralog
+similarities).
+From the graph, it is evident that (based on the above as-
+sumptions) <10% of homologous pairs are the result of a
+recentgeneduplicationwithinthegenome.Thiscalculation
+isinaccordancewithpreviouslarge-scaleanalysesonother
+proteinfamilies,whereHGTinsteadofintra-chromosomalgene duplication is considered the main driving force be-
+hind protein family expansion in prokaryotes with an esti-
+mated contribution of 88–98% ( 61). Furthermore, a previ-
+ous analysis with much less genomic data available at that
+time (1999) also supported HGT as a driving force in the
+early evolution of this family ( 21). On average, two ho-
+mologs of the same AARS enzyme in a genome had 57%
+sequence similarity. The 60% of analyzed genomes had no
+evidence of paralog presence in any AARS at all. More-
+over, the vast majority of AARSs were detected in bacte-
+1066NucleicAcidsResearch,2017,Vol.45,No.3
+Table2. PotentialAARS-inhibitingantibioticclusters
+Organism Phylogenetic groupAARS paralogue /
+xenologue Organismal characteristicsNumberof
+PKSwithinvicinity
+Paenibacilluspolymyxa E681 Firmicutes AspRS Produces compoundswithantifungal or
+antibacterial activity.7
+Azospirillumsp. B510 Proteobacteria PheRS Plant growth promotingorganism. 2
+Mycobacteriumabscessus Actinobacteria CysRS Causes achronic lunginfection,similar to
+tuberculosis, inpatients with cystic fibrosis.6
+Very resistant tomanycommonlyused
+antibiotics.
+Mycobacteriumsmegmatis
+JS623Actinobacteria CysRS Associated with soft tissue lesions following
+traumaor surgery.A possiblefactor inpenile carcinogenesis.4
+rial chromosomes, whereas only 4% of AARSs were found
+in plasmids (see supplementary file 1: NCBI proteininfo).
+Apparently, HGT plays a significant role in the expansionof AARS paralogs, but complex evolutionary scenarios in-
+cludinggeneduplicationsfollowedbyrapiddivergence,do-
+main shuffling and gene loss should also be considered, asin thecase of the bonafide AARSs ( 2,19,62,63)
+It is tempting to speculate that the extended presence of
+paralogs is mainly driven by resistance to inhibitors, as forexample in the case of bacterial MprF proteins that are
+fusedtoLysRSs( 64).Nevertheless,theintegrationofavail-
+able knowledge about known AARS paralogs with such
+resistance, together with the extent of paralog presence in
+prokaryotic genomes, as shown in Table 1, does not pro-
+vide strong support for such a claim. An alternative ex-
+planation is that these paralogs are involved in other bio-
+chemical functions ( 65), many of them as yet unknown, in
+accordance with various observations where AARSs form
+complexes with other types of proteins, thus participating
+in other functions beyond translation ( 22,66). It is also in-
+triguing that atypical AARS paralogs have been identified
+asparticipatinginpeptideformation viathenon-ribosomal
+peptide synthesis mechanism ( 67). In principle, manual in-
+spection of domain and MEME-motif architecture by our
+computationaltoolsshouldprovidebetterinsightonwhich
+is thetypical and whichis thediverse AARS allele.
+Computational detection of potential natural AARS in-
+hibitors
+Recently, there has been a growing concern that misuse of
+antibiotics is triggering the emergence of resistant strainsthat could eventually lead to a post-antibiotic world ( 68).
+Therefore, the discovery of new antibiotics, although ne-
+glected for some time, is now back in focus. AARSs havedrawn considerableattentionduringrecentyearsastargets
+of newantibacterial inhibitors.
+Mupirocin is the product of a cluster of multimodu-
+lar polyketide synthetases in Pseudomonas fluorescens and
+is an inhibitor of the cognate IleRS, acting as an an-
+tibiotic against methicillin-resistant Staphylococcusaureus .
+The modified IleRS paralog mupA that lies within the
+mupirocinbiosyntheticcluster(in P.fluorescens )confersre-
+sistancetomupirocinbycomplementingthefunctionofthemupirocin-inhibited cognate IleRS, thus acting as an anti-
+dote (26,69). To nullify the mupirocin inhibitor, S. aureus
+has evolved another paralog, mupB ( 69). In order to iden-
+tifyotherpotentialantibioticclusters,welookedforAARS
+paralogs /xenologsthathavewithintheirvicinity( ±10geneneighbors) NCBI-annotated polyketide synthetase genes.
+The results of this in silico genomic search are summa-
+r i z e di nT a b l e 2and need to be verified experimentally in
+the future. The mupirocin cluster was not detected because
+thewhole-genomesequenceof P.fluorescens strainwasnot
+availableforscanninginNCBI.Withthecostofsequencingbeing reduced, very soon, metagenomic approaches will be
+usedtoscanandidentifyenvironmentalcontigsthatharbor
+bothPKS and AARS genes in thesame sequence contig.
+CONCLUSIONS
+Oneofthemajorgoalsofthisstudywastodevelopcompu-
+tationaltoolsfortherapidandsensitivedetectionofAARS
+proteins encoded in genome sequences. This was accom-
+plishedbyusingautomaticandunbiaseddetectionofshort
+andconservedmotifswithineachofthe22AARSenzymes,
+using the MEME algorithm in combination with phyloge-neticanalyses.Next,thedetectedmotifswereusedtobuild
+HMMs.Toensuredetectionofdistanthomologs,HMMsof
+the whole catalytic domain of each AARS were developedaswell.Thisapproachgeneratedaweb-basedtoolthatuses
+all of the above HMMs to rapidly scan for AARS coding
+sequenceson agenome-wide scale.
+Thesecondmajorgoalofthisstudywastoanalyzemore
+than 2500 prokaryotic genomes for the presence and ab-
+sence of AARS-coding sequences, with the results orga-nizedandstoredinapubliclyavailabledatabase.Thislarge-
+scale and comprehensive evolutionary profile quantified,
+for the first time, the large variability that exists within aspecific,butessentialcomponentoftheapparatusrequired
+forthetranslationofthegeneticcode––theacylationoftR-
+NAs with their cognate amino acids. Furthermore, it ap-pears that the presence of more than one AARS homolog
+of the same enzyme is usually the result of horizontal gene
+transfer or gene duplication followed by rapid divergence,most probably linked to alternative biochemical functions,
+although resistance towards AARS-targeting toxins from
+otherbacteriacannot be excluded.
+SUPPLEMENTARY DATA
+SupplementaryDataare available at NAR Online.
+ACKNOWLEDGEMENTS
+WewouldliketothankProf.StephenG.Oliver,Department
+of Biochemistry, University of Cambridge, UK for critical
+readingofthe manuscript.
+NucleicAcidsResearch,2017,Vol.45,No.3 1067
+FUNDING
+‘ARISTEIA’ and ‘ARISTEIA II’ Action of the ‘OPER-
+ATIONAL PROGRAMME EDUCATION AND LIFE-
+LONG LEARNING’ and is co-funded by the European
+Social Fund (ESF) and National Resources [MIS 1225,No. D608 to C.S., 4288 to G.D.A.]; Postgraduate Pro-
+gram ‘Applications of Molecular Biology-Genetics, Diag-
+nostic Biomarkers’ [code 3817 to G.D.A.] of the Univer-sity of Thessaly, School of Health Sciences, Department of
+Biochemistry & Biotechnology; French National Program
+‘Investissement d’Avenir’ administered by the ‘Agence Na-tional de la Recherche’ (ANR), ‘MitoCross’ Laboratory of
+Excellence (Labex) [ANR-10-IDEX-0002-02] and the Uni-
+versity of Strasbourg (to H.B.); National Science Founda-tion[MCB1412611toM.I.].Thisworkwasalsosupported
+in part by ‘Fondation Sante’ Grants 2016 (E515 to CS).
+The open access publication charge for this paper has beenwaivedbyOxford UniversityPress- NAR.
+Conflictofintereststatement. Nonedeclared.
+REFERENCES
+1. Eriani,G.,Delarue,M.,Poch,O.,Gangloff,J.andMoras,D.(1990)
+PartitionoftRNAsynthetasesintotwoclassesbasedonmutually
+exclusivesetsofsequencemotifs. Nature,347,203–206.
+2. RibasdePouplana,LandSchimmel,P.(2001)TwoclassesoftRNA
+synthetasessuggestedby stericallycompatibledockingsontRNA
+acceptorstem. Cell,104,191–193.
+3. Curnow,A.W.,Hong,K.W.,Yuan,R.,Kim,S.I.,Martins,O.,
+Winkler,W.,Henkin,T.M.andS ¨oll,D.(1997)Glu-tRNAGln
+amidotransferase:anovelheterotrimericenzymerequiredforcorrect
+decodingofglutaminecodonsduringtranslation. Proc.Natl.Acad.
+Sci.U.S.A. ,94,11819–11826.
+4. Becker,H.D.andKern,D.(1998)Thermusthermophilus:alinkin
+evolutionofthetRNA-dependentaminoacidamidationpathways.
+Proc.Natl.Acad.Sci.U.S.A. ,95,12832–12837.
+5. Leinfelder,W.,Zehelein,E.,Mandrand-Berthelot,M.A.andB ¨ock,A.
+(1988)GeneforanoveltRNAspeciesthatacceptsL-serineandcotranslationallyinsertsselenocysteine. Nature,331,723–725.
+6. Ibba,M.,Curnow,A.W.andS ¨oll,D.(1997)Aminoacyl-tRNA
+synthesis:divergentroutestoacommongoal. TrendsBiochem.Sci. ,
+22,39–42.
+7. Sheppard,K.,Yuan,J.,Hohn,M.J.,Jester,B.,Devine,K.M.and
+S¨oll,D.(2008)Fromoneaminoacidtoanother:tRNA-dependent
+aminoacidbiosynthesis. NucleicAcidsRes. ,36,1813–1825.
+8. Sauerwald,A.,Zhu,W.,Major,T.A.,Roy,H.,Palioura,S.,Jahn,D.,
+Whitman,W.B.,Yates,J.R., Ibba,M.andS ¨oll,D.(2005)
+RNA-dependentcysteinebiosynthesisin archaea. Science,307,
+1969–1972.
+9. Ling,J.,O’Donoghue,P.andS ¨oll,D.(2015)Geneticcodeflexibilityin
+microorganisms:novelmechanismsandimpacton physiology. Nat.
+Rev.Microbiol. ,13,707–721.
+10. Ahel,I.,Korencic,D.,Ibba,M.andS ¨oll,D.(2003)Trans-editingof
+mischargedtRNAs. Proc.Natl.Acad.Sci.U.S.A. ,100,15422–15427.
+11. Andam,C.P.,Fournier,G.P.andGogarten,J.P.(2011)Multilevel
+populationsandtheevolutionofantibioticresistancethroughhorizontalgenetransfer. FEMSMicrobiol.Rev. ,35,756–767.
+12. Blaise,M.,Becker,H.D.,Keith,G.,Cambillau,C.,Lapointe,J.,
+Gieg´e,R.andKern,D.(2004)Aminimalistglutamyl-tRNA
+synthetasededicatedtoaminoacylationofthetRNAAspQUCanticodon. NucleicAcidsRes. ,32,2768–2775.
+13. Gilbart,J.,Perry,C.R.andSlocombe,B.(1993)High-levelmupirocin
+resistanceinStaphylococcusaureus:evidencefortwodistinctisoleucyl-tRNAsynthetases. Antimicrob.AgentsChemother.
+,37,
+32–38.
+14. Kim,S.,You,S.andHwang,D.(2011)Aminoacyl-tRNAsynthetases
+andtumorigenesis:morethanhousekeeping. Nat.Rev.Cancer ,11,
+708–718.15. Lo,W.-S.,Gardiner,E.,Xu,Z.,Lau,C.-F.,Wang,F.,Zhou,J.J.,
+Mendlein,J.D.,Nangle,L.A.,Chiang,K.P.,Yang,X.-L. etal.(2014)
+HumantRNAsynthetasecatalyticnullswithdiversefunctions.
+Science,345,328–332.
+16. Sissler,M.,Delorme,C.,Bond,J.,Ehrlich,S.D.,Renault,P.and
+Francklyn,C.(1999)Anaminoacyl-tRNAsynthetaseparalogwitha
+catalyticroleinhistidinebiosynthesis. Proc.Natl.Acad.Sci.U.S.A. ,
+96,8985–8990.
+17. Lamour,V.,Quevillon,S.,Diriong,S.,N’Guyen,V.C.,Lipinski,M.and
+Mirande,M.(1994)EvolutionoftheGlx-tRNAsynthetasefamily:
+theglutaminylenzymeasacaseofhorizontalgenetransfer. Proc.
+Natl.Acad.Sci.U.S.A. ,91,8670–8674.
+18. Fournier,G.P.,Andam,C.P.andGogarten,J.P.(2015)Ancient
+horizontalgenetransferandthelastcommonancestors. BMCEvol.
+Biol.,15,70.
+19. O’Donoghue,P.andLuthey-Schulten,Z.(2003)Ontheevolutionof
+structureinaminoacyl-tRNAsynthetases. Microbiol.Mol.Biol.Rev.
+MMBR,67,550–573.
+20. Woese,C.R.,Olsen,G.J.,Ibba,M.andS ¨oll,D.(2000)
+Aminoacyl-tRNAsynthetases,thegeneticcode,andtheevolutionaryprocess.Microbiol.Mol.Biol.Rev.MMBR ,64,202–236.
+21. Wolf,Y.I.,Aravind,L.,Grishin,N.V.andKoonin,E.V.(1999)
+Evolutionofaminoacyl-tRNAsynthetases–analysisofuniquedomainarchitecturesandphylogenetictreesrevealsacomplexhistoryofhorizontalgenetransferevents. GenomeRes. ,9,689–710.
+22. Laporte,D.,Huot,J.L.,Bader,G.,Enkler,L.,Senger,B.and
+Becker,H.D.(2014)Exploringtheevolutionarydiversityandassemblymodesofmulti-aminoacyl-tRNAsynthetasecomplexes:lessonsfromunicellularorganisms. FEBSLett. ,588,4268–4278.
+23. Pham,J.S.,Dawson,K.L.,Jackson,K.E.,Lim,E.E.,Pasaje,C.F.A.,
+Turner,K.E.C.andRalph,S.A.(2014)Aminoacyl-tRNAsynthetasesasdrugtargetsineukaryoticparasites. Int.J.Parasitol.DrugsDrug
+Resist.,4,1–13.
+24. Antonio,M.,McFerran,N.andPallen,M.J.(2002)Mutations
+affectingtheRossmanfoldofisoleucyl-tRNAsynthetasearecorrelatedwithlow-levelmupirocinresistanceinStaphylococcusaureus.Antimicrob.AgentsChemother. ,46,438–442.
+25. Yanagisawa,T.andKawakami,M.(2003)HowdoesPseudomonas
+fluorescensavoidsuicidefromitsantibioticpseudomonicacid?:Evidencefortwoevolutionarilydistinctisoleucyl-tRNAsynthetases
+conferringself-defense. J.Biol.Chem. ,278,25887–25894.
+26. El-Sayed,A.K.,Hothersall,J.,Cooper,S.M.,Stephens,E.,
+Simpson,T.J.andThomas,C.M.(2003)CharacterizationofthemupirocinbiosynthesisgeneclusterfromPseudomonasfluorescens
+NCIMB10586. Chem.Biol. ,10,419–430.
+27. Ochsner,U.A.,Sun,X.,Jarvis,T.,Critchley,I.andJanjic,N.(2007)
+Aminoacyl-tRNAsynthetases:essentialandstillpromisingtargetsfornewanti-infectiveagents. ExpertOpin.Investig.Drugs ,16
+,573–593.
+28. Guo,L.-T.,Wang,Y.-S.,Nakamura,A.,Eiler,D.,Kavran,J.M.,
+Wong,M.,Kiessling,L.L.,Steitz,T.A.,O’Donoghue,P.andS ¨oll,D.
+(2014)Polyspecificpyrrolysyl-tRNAsynthetasesfromdirectedevolution.Proc.Natl.Acad.Sci.U.S.A. ,111,16724–16729.
+29. Hadd,A.andPerona,J.J.(2014)Recodingaminoacyl-tRNA
+synthetasesforsyntheticbiologyby rationalprotein-RNAengineering. ACSChem.Biol. ,9,2761–2766.
+30. Passioura,T.andSuga,H.(2014)Reprogrammingthegeneticcodein
+vitro.TrendsBiochem.Sci. ,39,400–408.
+31. Wang,L.,Xie,J. andSchultz,P.G.(2006)Expandingthegeneticcode.
+Annu.Rev.Biophys.Biomol.Struct. ,35,225–249.
+32. UniProtConsortium(2015)UniProt:ahubforproteininformation.
+NucleicAcidsRes. ,43,D204–D212.
+33. Bailey,T.L.,Johnson,J.,Grant,C.E.andNoble,W.S.(2015)The
+MEMESuite. NucleicAcidsRes. ,doi:10.1093 /nar /gkv416.
+34. Chothia,C.,Gough,J.,Vogel,C.andTeichmann,S.A.(2003)Evolution
+oftheproteinrepertoire. Science,300,1701–1703.
+35. Marsh,J.A.andTeichmann,S.A.(2010)Howdoproteinsgainnew
+domains?GenomeBiol. ,11,126.
+36. Teichmann,S.A.,Rison,S.C.,Thornton,J.M.,Riley,M.,Gough,J.and
+Chothia,C.(2001)Theevolutionandstructuralanatomyof thesmallmoleculemetabolicpathwaysin Escherichiacoli. J.Mol.Biol. ,311,
+693–708.
+37. Weiner,J.,Moore,A.D.andBornberg-Bauer,E.(2008)Justhow
+versatileare domains? BMCEvol.Biol. ,8, 285.
+1068NucleicAcidsResearch,2017,Vol.45,No.3
+38. Eddy,S.R.(2011)AcceleratedProfileHMMSearches. PLoSComput.
+Biol.,7,e1002195.
+39. Edgar,R.C.(2004)MUSCLE:multiplesequencealignmentwithhigh
+accuracyandhighthroughput. NucleicAcidsRes. ,32,1792–1797.
+40. Gouy,M.,Guindon,S.andGascuel,O.(2010)SeaViewversion4:A
+multiplatformgraphicaluserinterfaceforsequencealignmentand
+phylogenetictree building. Mol.Biol.Evol. ,27,221–224.
+41. Chevenet,F.,Brun,C.,Ba ˜nuls,A.-L.,Jacq,B.andChristen,R.(2006)
+TreeDyn:towardsdynamicgraphicsandannotationsforanalysesoftrees.BMCBioinformatics ,7,439.
+42. Rose,P.W.,Prli ´c,A.,Bi,C.,Bluhm,W.F.,Christie,C.H.,Dutta,S.,
+Green,R.K.,Goodsell,D.S.,Westbrook,J.D.,Woo,J. etal.(2015)The
+RCSBProteinDataBank:viewsof structuralbiologyforbasicandappliedresearch andeducation. NucleicAcidsRes. ,43,D345–D356.
+43. Fox,N.K.,Brenner,S.E.andChandonia,J.-M.(2014)SCOPe:
+StructuralClassificationofProteins––extended,integratingSCOPandASTRALdataandclassificationofnewstructures. NucleicAcids
+Res.,42,D304–D309.
+44. Mitchell,A.,Chang,H.-Y.,Daugherty,L.,Fraser,M.,Hunter,S.,
+Lopez,R.,McAnulla,C.,McMenamin,C.,Nuka,G.,Pesseat,S. etal.
+(2015)TheInterProproteinfamiliesdatabase:theclassification
+resourceafter15years. NucleicAcidsRes. ,43,D213–D221.
+45. Marchler-Bauer,A.,Derbyshire,M.K.,Gonzales,N.R.,Lu,S.,
+Chitsaz,F.,Geer,L.Y.,Geer,R.C.,He,J.,Gwadz,M.,Hurwitz,D.I.etal.(2015)CDD:NCBI’sconserveddomaindatabase. NucleicAcids
+Res.,43,D222–D226.
+46. Valencia-S ´anchez,M.I.,Rodr ´ıguez-Hern ´andez,A.,Ferreira,R.,
+Santamaria-Su ´arez,H.A.,Arciniega,M.,Dock-Bregeon,A.-C.,
+Moras,D.,Beinsteiner,B.,Mertens,H.,Svergun,D. etal.(2016)
+StructuralinsightsintothepolyphyleticoriginsofglycyltRNA
+synthetases. J.Biol.Chem. ,doi:10.1074 /jbc.M116.730382.
+47. Attwood,T.K.,Coletta,A.,Muirhead,G.,Pavlopoulou,A.,
+Philippou,P.B.,Popov,I.,Rom ´a-Mateo,C.,Theodosiou,A.and
+Mitchell,A.L.(2012)ThePRINTSdatabase:afine-grainedprotein
+sequenceannotationandanalysisresource–itsstatusin2012.DatabaseJ.Biol.DatabasesCuration ,bas019.
+48. Szymanski,M.,Deniziak,M.A.andBarciszewski,J.(2001)
+Aminoacyl-tRNAsynthetasesdatabase. NucleicAcidsRes. ,29,
+288–290.
+49. Guo,M.,Chong,Y.E.,Shapiro,R.,Beebe,K.,Yang,X.-L.and
+Schimmel,P.(2009)Paradoxofmistranslationofserineforalanine
+causedbyAlaRSrecognitiondilemma. Nature,462
+,808–812.
+50. Han,J.M.,Jeong,S.J.,Park,M.C.,Kim,G.,Kwon,N.H.,Kim,H.K.,
+Ha,S.H.,Ryu,S.H.andKim,S.(2012)Leucyl-tRNAsynthetaseisan
+intracellularleucinesensorforthemTORC1-signalingpathway. Cell,
+149,410–424.
+51. Guo,M.,Schimmel,P.andYang,X.-L.(2010)Functionalexpansion
+ofhumantRNAsynthetasesachievedbystructuralinventions. FEBS
+Lett.,584,434–442.
+52. Brown,J.R.andDoolittle,W.F.(1999)Genedescent,duplication,and
+horizontaltransferintheevolutionofglutamyl-andglutaminyl-tRNAsynthetases. J.Mol.Evol. ,49,485–495.
+53. Koonin,E.V.,Makarova,K.S.andAravind,L.(2001)Horizontalgene
+transferinprokaryotes:quantificationandclassification. Annu.Rev.
+Microbiol. ,55,709–742.
+54. Tumbula,D.L.,Becker,H.D.,Chang,W.Z.andS ¨oll,D.(2000)
+Domain-specificrecruitmentofamideaminoacidsforprotein
+synthesis.Nature,407,106–110.55. Dong,X.,Zhou,M.,Zhong,C.,Yang,B.,Shen,N.andDing,J. (2010)
+Crystalstructureof Pyrococcushorikoshiitryptophanyl-tRNAsynthetaseandstructure-basedphylogeneticanalysissuggestan
+archaealoriginoftryptophanyl-tRNAsynthetase. NucleicAcidsRes. ,
+38,1401–1412.
+56. Francklyn,C.(2003)tRNAsynthetaseparalogs:evolutionarylinksin
+thetransitionfromtRNA-dependentaminoacidbiosynthesistode
+novobiosynthesis. Proc.Natl.Acad.Sci.U.S.A. ,100,9650–9652.
+57. Wong,J.T.(1975)Aco-evolutiontheoryofthegeneticcode. Proc.
+Natl.Acad.Sci.U.S.A. ,72,1909–1912.
+58. Higgs,P.G.andPudritz,R.E.(2009)Athermodynamicbasisfor
+prebioticaminoacidsynthesisandthenatureofthefirstgeneticcode.Astrobiology ,9,483–490.
+59. Bennett,G.M.andMoran,N.A.(2013)Small,smaller,smallest:the
+originsandevolutionofancientdualsymbiosesin aPhloem-feeding
+insect.GenomeBiol.Evol. ,5,1675–1688.
+60. Ibba,M.,Morgan,S.,Curnow,A.W.,Pridmore,D.R.,
+Vothknecht,U.C.,Gardner,W.,Lin,W.,Woese,C.R.andS ¨oll,D.
+(1997)A euryarchaeallysyl-tRNAsynthetase:resemblancetoclassI
+synthetases. Science,278,1119–1122.
+61. Treangen,T.J.andRocha,E.P.C.(2011)Horizontaltransfer,not
+duplication,drivestheexpansionofproteinfamiliesin prokaryotes.PLoSGenet. ,7,e1001284.
+62. Kunin,V.andOuzounis,C.A.(2003)Thebalanceof drivingforces
+duringgenomeevolutioninprokaryotes. GenomeRes. ,13,
+1589–1594.
+63. Kyrpides,N.,Overbeek,R.andOuzounis,C.(1999)Universalprotein
+familiesandthefunctionalcontentofthelastuniversalcommonancestor.J.Mol.Evol. ,49,413–423.
+64. Roy,H.andIbba,M.(2008)RNA-dependentlipidremodelingby
+bacterialmultiplepeptideresistancefactors. Proc.Natl.Acad.Sci.
+U.S.A.
+,105,4667–4672.
+65. Gieg´e,R.andSpringer,M.(2016)Aminoacyl-tRNASynthetasesin
+theBacterialWorld. EcoSalPlus ,7,
+doi:10.1128 /ecosalplus.ESP-0002-2016.
+66. Rubio,M. ´A.,Napolitano,M.,OchoadeAlda,J.A.G.,
+Santamar ´ıa-G´omez,J.,Patterson,C.J., Foster,A.W.,Bru-Mart ´ınez,R.,
+Robinson,N.J.andLuque,I.(2015)Trans-oligomerizationof
+duplicatedaminoacyl-tRNAsynthetasesmaintainsgeneticcode
+fidelityunderstress. NucleicAcidsRes. ,43,9905–9917.
+67. Mocibob,M.,Ivic,N.,Bilokapic,S.,Maier,T.,Luic,M.,Ban,N.and
+Weygand-Durasevic,I.(2010)Homologsofaminoacyl-tRNA
+synthetasesacylatecarrierproteinsandprovidealinkbetween
+ribosomalandnonribosomalpeptidesynthesis. Proc.Natl.Acad.Sci.
+U.S.A.,107,14585–14590.
+68. Liu,Y.-Y.,Wang,Y.,Walsh,T.R.,Yi,L.-X.,Zhang,R.,Spencer,J.,
+Doi,Y.,Tian,G.,Dong,B.,Huang,X. etal.(2015)Emergenceof
+plasmid-mediatedcolistinresistancemechanismMCR-1inanimalsandhumanbeingsinChina:amicrobiologicalandmolecular
+biologicalstudy. LancetInfect.Dis. ,
+doi:10.1016 /S1473-3099(15)00424-7.
+69. Seah,C.,Alexander,D.C.,Louie,L.,Simor,A.,Low,D.E.,Longtin,J.
+andMelano,R.G.(2012)MupB,a newhigh-levelmupirocin
+resistancemechanisminStaphylococcusaureus. Antimicrob.Agents
+Chemother. ,56,1916–1920.
